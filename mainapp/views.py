@@ -20,7 +20,7 @@ def index(request: HttpRequest):
             'img_src': 'product-2.jpg',
             'img_href': '/product/2/',
             'alt': 'product 2'
-       },
+        },
     ]
 
     return render(request, 'mainapp/index.html', {

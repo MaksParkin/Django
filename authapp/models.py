@@ -1,0 +1,14 @@
+
+# Create your models here.
+from django.db import models
+from django.forms import fields
+from django.contrib.auth.models import AbstractUser
+
+from django.contrib.auth.models import AbstractUser
+
+
+class ShopUser(AbstractUser):
+    avatar = models.ImageField(upload_to='users_avatars', blank=True)
+    age = models.PositiveIntegerField(verbose_name='Возраст')
+#    gender = fields.ChoiceField(choices=['М', 'Ж'])
+    city = models.CharField(max_length=40, verbose_name='Город')
