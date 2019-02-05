@@ -26,7 +26,8 @@ urlpatterns = [
     path('products/', controller.products, name='catalog'),
     path('contact/', controller.contact, name='contacts'),
     path('company/', include('mainapp.urls', namespace='company')),
-    path('auth/', include('authapp.urls', namespace='auth'))
+    path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
 ]
 
 if settings.DEBUG:

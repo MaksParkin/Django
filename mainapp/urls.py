@@ -4,6 +4,8 @@ import mainapp.views as controller
 app_name = 'mainapp'
 
 urlpatterns = [
-    path('', controller.company_index, name='index'),
-    path('<int:id>', controller.company_view, name='view')
+    path('', controller.products, name='index'),
+    path('<int:id>', controller.products, name='category'),
+    path('details/<int:id>/', controller.product_detail, name='details')
 ]
+

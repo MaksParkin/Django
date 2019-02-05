@@ -1070,3 +1070,19 @@ td:first-child {
 .related-products a:hover .text{
 	display: block;
 }
+
+.basket {
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 43px;
+	left: 1210px;
+    text-decoration: none;
+    color: #555;
+}
+
+
+
+
+

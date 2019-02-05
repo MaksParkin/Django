@@ -35,14 +35,16 @@
 
 		{% for product in products %}
 		<div class="block">
-    		<a href="{{ product.img_href }}">
-        		<img src="{% static 'img/' %}{{ product.img_src }}" alt="{{ product.alt }}">
-        		<div class="text">
-            		<img src="{% static 'img/icon-hover.png' %}" alt="{{ product.alt }}">
-            		<h4>{{ product.name }}</h4>
-            		<p>{{ product.desc }} </p>
-        		</div>
-    		</a>
+			<a href="#"><img src="{{ MEDIA_URL }}{{ product.image }}" alt="{{ product.short_desc }}">
+				<div class="text">
+					<img src="{% static 'img/icon-hover.png' %}" alt="img">
+					<h3>Категория:{{ product.category.name }}</h3>
+					<h4>Название: {{ product.name }}</h4>
+					<p>Описание: {{ product.description }} </p>
+					<p>Цена: {{ product.price }} </p>
+					<p>На складе: {{ product.quantity }} </p>
+				</div>
+			</a>
 		</div>
 		{% endfor %}
 
