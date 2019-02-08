@@ -11,3 +11,4 @@ urlpatterns = [
     path('register/', controller.register, name='register'),
     path('edit/', controller.edit, name='edit'),
 ]
+
