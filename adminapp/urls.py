@@ -1,14 +1,18 @@
 from django.urls import path
 from adminapp.views import users, products, categories
+from adminapp.controllers import user
 
 app_name = 'adminapp'
 
 urlpatterns = [
     #CRUD users
     path('users/index', users.index, name='users'),
-    path('users/create', users.create, name='user_create'),
-    path('users/read/<int:id>', users.read, name='users'),
-    path('users/update/<int:id>', users.update, name='user_update'),
+    path('users/create', user.UserCreateView.as_view(), name='user_create'),
+    # path('users/create', users.create, name='user_create'),
+    path('users/read/<int:id>', user.UserListView.as_view(), name='users'),
+    # path('users/read/<int:id>', users.read, name='users'),
+    path('users/update/<int:id>', user.UserUpdateView.as_view(), name='user_update'),
+    # path('users/update/<int:id>', users.update, name='user_update'),
     path('users/delete/<int:id>', users.delete, name='user_delete'),
     #CRUD categories
     path('categories/index', categories.index, name='categories'),

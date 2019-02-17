@@ -1,6 +1,7 @@
 {% extends 'mainapp/layout.html' %}
 
 {% load static %}
+{% load currency %}
 
 {% block content %}
     <div class="details">
@@ -18,7 +19,7 @@
             <div class="description">
                 <h3 class="big-bold">{{ item.name }}</h3>
                 <h3 class="red">горячее предложение</h3>
-                <p class="price"> {{ item.price }} <span>руб</span></p>
+                <p class="price"> {{ item.price | rubles }} <span>руб</span></p>
 
 {#                {% if request.user.is_authenticated %}#}
                 <a href="{% url 'basket:add' id=item.id %}" class="red-button">

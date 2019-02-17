@@ -11,10 +11,25 @@
         <div class="related">
             <div class="title clearfix">
                 <h2>Каталог</h2>
+                <ul>
+                    {% if provider.has_previous %}
+                        <li>
+                            <a href="{% url 'products:page' page=provider.previous_page_number %}">Prev</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        page #{{ provider.number }} of {{ provider.paginator.num_pages }}
+                    </li>
+                    {% if provider.has_next %}
+                        <li>
+                            <a href="{% url 'products:page' page=provider.next_page_number %}">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
             <div class="related-products clearfix">
 
-                {% for product in identic_products %}
+                {% for product in provider %}
                     <div class="block">
                         <a href="{% url 'catalog:details' id=product.id %}">
                             <img src="{{ MEDIA_URL }}{{ product.image }}" alt="{{ product.short_desc }}">
