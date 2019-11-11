@@ -1,0 +1,54 @@
+{% extends 'mainapp/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="details">
+        <div class="links clearfix">
+            {% include 'mainapp/widgets/categories.html' %}
+        </div>
+
+        <div class="related">
+            <div class="title clearfix">
+                <h2>Каталог</h2>
+                <ul>
+                    {% if provider.has_previous %}
+                        <li>
+                            <a href="{% url 'products:page' page=provider.previous_page_number %}">Prev</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        page #{{ provider.number }} of {{ provider.paginator.num_pages }}
+                    </li>
+                    {% if provider.has_next %}
+                        <li>
+                            <a href="{% url 'products:page' page=provider.next_page_number %}">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="related-products clearfix">
+
+                {% for product in provider %}
+                    <div class="block">
+                        <a href="{% url 'catalog:details' id=product.id %}">
+                            <img src="{{ MEDIA_URL }}{{ product.image }}" alt="{{ product.short_desc }}">
+                            <div class="text">
+                                <img src="/static/img/icon-hover.png" alt="img">
+                                <h3>Категория:{{ product.category.name }}</h3>
+                                <h4>Название: {{ product.name }}</h4>
+                                <p>Описание: {{ product.description }} </p>
+                                <p>Цена: {{ product.price }} </p>
+                                <p>На складе: {{ product.quantity }} </p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+{% endblock %}
